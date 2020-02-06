@@ -1,0 +1,14 @@
+{
+	"cmsName": "实验室管理系统",
+	"version": "v1.0",
+	"author": "YangChao",
+	"homePage": "index.html",
+	"server": "windows",
+	"dataBase": "8.00.2039",
+	"maxUpload": "2M",
+	"userRights": "超级管理员",
+	"description": "闲来无事,东搞搞西搞搞",
+	"powerby": "无",
+	"record": "无",
+	"keywords": "无"
+}

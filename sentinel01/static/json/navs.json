@@ -1,0 +1,98 @@
+[{
+	"title" : "首页",
+	"icon" : "icon-shouye",
+	"href" : "main",
+	"spread" : false
+},{
+	"title" : "检测中心",
+	"icon" : "icon-yixuejianyanke",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "样本管理",
+			"icon" : "&#xe65b;",
+			"href" : "laboratory/sampleList",
+			"spread" : false
+		},
+		{
+			"title" : "基因检测",
+			"icon" : "&#xe65b;",
+			"href" : "laboratory/testList",
+			"spread" : false,
+			"target" : ""
+		},
+		{
+			"title" : "报告管理",
+			"icon" : "&#xe65b;",
+			"href" : "laboratory/reportList",
+			"spread" : false,
+			"target" : ""
+		}
+	]
+},{
+	"title" : "设备管理",
+	"icon" : "icon-shebei",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "设备管理",
+			"icon" : "&#xe65b;",
+			"href" : "device/deviceList",
+			"spread" : false
+		}
+	]
+},{
+	"title" : "文件管理",
+	"icon" : "icon-wenjian",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "文件管理",
+			"icon" : "&#xe65b;",
+			"href" : "file/fileList",
+			"spread" : false
+		}
+	]
+},{
+	"title" : "项目管理",
+	"icon" : "icon-xiangmuguanli1",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "项目管理",
+			"icon" : "&#xe65b;",
+			"href" : "project/projectList",
+			"spread" : false
+		}
+	]
+},{
+	"title" : "物料管理",
+	"icon" : "icon-wuliaoguanli",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "物料管理",
+			"icon" : "&#xe65b;",
+			"href" : "material/materialList",
+			"spread" : false
+		}
+	]
+},{
+	"title" : "系统管理",
+	"icon" : "icon-xitongguanli1",
+	"href" : "",
+	"spread" : false,
+	"children" : [
+		{
+			"title" : "用户管理",
+			"icon" : "&#xe65b;",
+			"href" : "user/userList",
+			"spread" : false
+		}
+	]
+}]

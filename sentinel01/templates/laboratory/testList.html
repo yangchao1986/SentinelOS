@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>实验室管理系统</title>
+    <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}" media="all" />
+</head>
+<body class="childrenBody" style="padding: 20px;">
+<!-- 查询 -->
+<blockquote class="layui-elem-quote quoteBox">
+    <form class="layui-form">
+        <div class="layui-inline">
+            <label class="layui-form-label">条形码</label>
+            <div class="layui-input-inline" style="width: 200px;">
+                <input type="tel" name="title" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+            <label class="layui-form-label">样本编号</label>
+            <div class="layui-input-inline" style="width: 200px;">
+                <input type="text" name="title" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-inline">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <select name="state" id="state">
+                        <option value="" selected="">请选择</option>
+                        <option value="已审核" >已审核</option>
+                        <option value="未审核">未审核</option>
+                        <option value="中止检测">中止检测</option>
+                        <option value="停止检测">停止检测</option>
+                    </select>
+                </div>
+            </div>
+        <!-- 查询按钮 -->
+        <div class="layui-inline" style="position: relative;left: 20px;">
+            <button type="button" class="layui-btn" style="width: 100px;"><i class="layui-icon">&#xe615;</i>查询</button>
+        </div>
+    </form>
+</blockquote>
+			<!-- 灰色分割线 -->
+			<hr class="layui-bg-gray">
+			<!-- 增加样本按钮 -->
+			<div class="layui-inline">
+				<a class="layui-btn layui-btn-normal addNews_btn"><i class="layui-icon">&#xe654;</i>核酸提取</a>
+			</div>
+			<!-- 增加数据按钮 -->
+			<div class="layui-inline">
+				<a class="layui-btn layui-btn-normal addGene_btn"><i class="layui-icon">&#xe654;</i>基因检测</a>
+			</div>
+			<div class="layui-inline">
+				<a class="layui-btn layui-btn-danger delAll_btn"><i class="layui-icon">&#xe640;</i>删除信息</a>
+			</div>
+			<!-- lay-filter="testEvent"用于监听newsListBar的操作 -->
+			<table id="testList" lay-filter="testEvent"></table>
+			
+		<!--操作-->
+		<script type="text/html" id="newsListBar">
+			<a class="layui-btn layui-btn-xs" lay-event="look">预览</a>
+			<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="edit">编辑</a>
+			<a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="check">审核</a>
+		</script>
+		   
+		  
+		
+		<script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/test.js' %}"></script>
+		<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+		<script>
+		    layui.use(['form', 'layedit', 'laydate'], function () {
+		        var form = layui.form,
+		            layer = layui.layer,
+		            layedit = layui.layedit,
+		            laydate = layui.laydate;
+		
+		        //日期
+		        laydate.render({
+		            elem: '#date'
+		        });
+		        laydate.render({
+		            elem: '#date1'
+		        });
+				laydate.render({
+					elem: '#date2',
+					value: new Date(),
+				});
+
+		    });
+		</script>
+		  
+	</body>
+</html>

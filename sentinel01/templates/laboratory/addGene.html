@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="{% static 'layui/css/layui.css' %}" media="all" />
+
+	</head>
+	<body>
+		<div style="padding: 20px 30px 0px 30px;">
+			<form class="layui-form layui-form-pane" action="">
+			    <div class="layui-form-item" style="width: 500px;">
+			        <label class="layui-form-label">条形码</label>
+			        <div class="layui-input-block">
+						<!-- lay-verify="required|ID"可以添加验证规则 -->
+			            <input type="text" autocomplete="off" class="layui-input">
+			        </div>
+			    </div>
+				<div class="layui-form-item" style="width: 500px;">
+					<label class="layui-form-label">实验编号</label>
+					<div class="layui-input-block">
+					    <input type="text" autocomplete="off" class="layui-input">
+					</div>
+				</div>
+				<div class="layui-form-item" style="width: 500px;">
+				    <label class="layui-form-label">检测方法</label>
+				    <div class="layui-input-block">
+				        <select name="sampleType" lay-verify="sampleType">
+				            <option value="" selected="">请选择检测方法</option>
+				            <option value="0">荧光PCR法</option>
+				            <option value="1">高通量芯片法</option>
+				            <option value="2">高通量测序法</option>
+				        </select>
+				    </div>
+				</div>
+				<div class="layui-form-item" >
+					<label class="layui-form-label">检测结果</label>
+					    <div class="layui-input-inline" style="width: 265px;">
+					      <input type="text" autocomplete="off" class="layui-input">
+					    </div>
+					    <div class="layui-input-inline" style="width: 100px;">
+							<select name="quiz1">
+							  <option value="自动输入" >手动输入</option>
+							  <option value="手动输入" selected="">自动输入</option>
+							</select>
+					    </div>
+				</div>
+				
+<div  style="position: relative;top:60px;">
+	<div class="layui-form-item" style="width: 500px;">
+	    <label class="layui-form-label">检测状态</label>
+	    <div class="layui-input-block">
+	      <input type="checkbox" name="like1[PASS]" lay-skin="primary" title="正常" checked="">
+	      <input type="checkbox" name="like1[NOT]" lay-skin="primary" title="异常">
+	      <input type="checkbox" name="like1[STOP]" lay-skin="primary" title="中止" disabled="">
+	    </div>
+	</div>
+	<div class="layui-form-item layui-form-text" style="width: 500px;">
+	    <label class="layui-form-label">备注信息</label>
+	    <div class="layui-input-block">
+	        <textarea placeholder="请输入异常原因" class="layui-textarea"></textarea>
+	    </div>
+	</div>
+	
+	<!-- 信息提交按钮 -->
+	<div class="layui-form-item">
+	    <div class="layui-input-block">
+	        <button class="layui-btn" lay-submit="" lay-filter="demo1">提交信息</button>
+	        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+	    </div>
+	</div>
+</div>
+				
+				
+			</form>
+		</div>
+		<div class="layui-form-item" style="text-align: right;position: relative;top:-260px;left:-30px">
+			<div class="layui-upload">
+				<button class="layui-btn" lay-submit="" id="demo2"><i class="layui-icon"></i>上传文件</button>
+			</div>
+		</div>
+		
+		
+		<script type="text/javascript" src="{% static 'layui/layui.js' %}"></script>
+		<script type="text/javascript" src="{% static 'js/test.js' %}"></script>
+
+		<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
+		<script>
+		    layui.use(['form', 'layedit', 'laydate','upload'], function () {
+		        var form = layui.form,
+		            layer = layui.layer,
+		            layedit = layui.layedit,
+		            laydate = layui.laydate;
+					upload = layui.upload;
+		
+		        //日期
+		        laydate.render({
+		            elem: '#date'
+		        });
+		        laydate.render({
+		            elem: '#date1'
+		        });
+				laydate.render({
+					elem: '#date2',
+					value: new Date(),
+				});
+				
+				//指定允许上传的文件类型
+				upload.render({
+					elem: '#demo2',
+					url: '/upload/',
+				    accept: 'file', //普通文件
+				    done: function(res){
+				        console.log(res)
+				    },
+				});
+				
+				
+		    });
+		</script>
+	</body>
+</html>

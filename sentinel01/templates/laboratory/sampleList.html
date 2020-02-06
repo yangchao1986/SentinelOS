@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>实验室管理系统</title>
+	<link rel="stylesheet" href="{% static 'layui/css/layui.css' %}" media="all" />
+
+</head>
+<body class="childrenBody" style="padding: 20px;">
+    <!-- FORM查询模块 -->
+    <blockquote class="layui-elem-quote quoteBox">
+        <form class="layui-form" id="form2">
+            {% csrf_token %}
+            <div class="layui-inline">
+                <label class="layui-form-label">条形码</label>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <input type="tel" name="code" autocomplete="off" class="layui-input search_input" id="code">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">客户姓名</label>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <input type="text" name="name"  autocomplete="off" class="layui-input search_input" id="name">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">状态</label>
+                <div class="layui-input-inline" style="width: 200px;">
+                    <select name="state" id="state">
+                        <option value="" selected="">全部</option>
+                        <option value="已审核" >已审核</option>
+                        <option value="未审核">未审核</option>
+                        <option value="中止检测">中止检测</option>
+                        <option value="停止检测">停止检测</option>
+                    </select>
+                </div>
+            </div>
+            <!-- 查询按钮 -->
+            <div class="layui-inline" style="position: relative;left: 20px;">
+                <button type="button" class="layui-btn" lay-submit="" lay-filter="search_btn" id="search_btn" data-type="reload" style="width: 100px;"><i class="layui-icon">&#xe615;</i>查询</button>
+            </div>
+        </form>
+    </blockquote>
+	<!-- 灰色分割线 -->
+	<hr class="layui-bg-gray">
+	<!-- 增加样本按钮 -->
+	<div class="layui-inline">
+		<a class="layui-btn layui-btn-normal addNews_btn" id="addNews_btn"><i class="layui-icon">&#xe654;</i>增加样本信息</a>
+	</div>
+	<div class="layui-inline">
+		<a class="layui-btn layui-btn-danger delAll_btn"><i class="layui-icon">&#xe640;</i>删除样本信息</a>
+	</div>
+
+	<!-- 主表 -->
+	<table id="sampleList" lay-filter="sampleList"></table>
+
+	<!--操作-->
+	<script type="text/html" id="newsListBar">
+        {% csrf_token %}
+		<a class="layui-btn layui-btn-xs" lay-event="look">预览</a>
+		<a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="edit">编辑</a>
+		<a class="layui-btn layui-btn-xs layui-btn-primary" lay-event="check">审核</a>
+	</script>
+
+    <script src="{% static 'layui/layui.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/jquery/jquery-3.4.1.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/jquery/jquery.cookie.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/sample.js' %}" charset="utf-8"></script>
+{#    <script>#}
+{#        // 如果增加csrf验证，规避跨站请求攻击#}
+{#        var csrftoken = $.cookie('csrftoken');#}
+{#        function csrfSafeMethod(method) {#}
+{#            // these HTTP methods do not require CSRF protection#}
+{#            return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));#}
+{#        }#}
+{#        $.ajaxSetup({#}
+{#            beforeSend: function(xhr, settings) {#}
+{#                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {#}
+{#                    xhr.setRequestHeader("X-CSRFToken", csrftoken);#}
+{#                }#}
+{#            },#}
+{#            data:{csrfmiddlewaretoken:'{{ csrf_token }}'}#}
+{#        });#}
+{##}
+{##}
+{#        //监听指定点击事件开关#}
+{#        $("#search_btn").click(function(){#}
+{#            if($(".search_input").val()!=''){#}
+{#            var index = layer.msg('查询中，请稍候',{icon: 16,time:false,shade:0.8});#}
+{#            setTimeout(function(){#}
+{#                var formObject = {};#}
+{#                var formArray =$("#form2").serializeArray();#}
+{#                $.each(formArray,function(i,item){#}
+{#                    formObject[item.name] = item.value;#}
+{#                });#}
+{#                $.ajax({#}
+{#                    url: "search",#}
+{#                    data:formObject,#}
+{#                    type: "POST",#}
+{#                    dataType: "JSON",#}
+{#                    success: function (data) {#}
+{#                        if(data.success==200){#}
+{#                            layer.alert('查询完成！');#}
+{#                        }#}
+{#                    }#}
+{#                });#}
+{#                layer.close(index);#}
+{#            },2000);#}
+{#        }else{#}
+{#            layer.msg("请输入需要查询的内容");#}
+{#        }#}
+{#    })#}
+{#    </script>#}
+
+</body>
+</html>

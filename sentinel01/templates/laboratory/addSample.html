@@ -1,0 +1,201 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加样本</title>
+    <link rel="stylesheet" href="{% static 'layui/css/layui.css' %}" media="all">
+    <link rel="stylesheet" href="{% static 'css/public.css' %}" media="all">
+
+</head>
+<body>
+    <!-- 表单信息 -->
+    <div class="layuimini-container" style="">
+        <div class="layuimini-main" style="position:relative;padding: 20px;">
+            <form class="layui-form layui-form-pane" method="post" action="" id="form1">
+                {% csrf_token %}
+                <div class="layui-form-item">
+                    <label class="layui-form-label">条形码</label>
+                    <div class="layui-input-block">
+                        <!-- lay-verify="required|ID"可以添加验证规则 -->
+                        <input type="text" name="code" lay-verify="required|code"  placeholder="必填" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">客户姓名</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="name" lay-verify="required|name" autocomplete="off" placeholder="必填"  class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">性别</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="gend" value="男" title="男" checked="">
+                        <input type="radio" name="gend" value="女" title="女">
+                        <input type="radio" name="gend" value="位置" title="禁用" disabled="">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">出生日期</label>
+                        <div class="layui-input-inline" style="width:250px">
+                            <input type="text" name="birt" id="date0" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">证件号码</label>
+                    <div class="layui-input-inline">
+                        <select name="">
+                            <option value="">请选择证件类型</option>
+                            <option value="身份证" selected="">身份证</option>
+                            <option value="护照编号">护照编号</option>
+                            <option value="港澳通行证">港澳通行证</option>
+                        </select>
+                    </div>
+                    <div class="layui-inline">
+                        <div class="layui-input-inline" style="width:250px">
+                            <input type="text" name="uids" autocomplete="off" placeholder=""  class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">现病史</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="hist" autocomplete="off" placeholder=""  class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">家族病史</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="fami" autocomplete="off" placeholder=""  class="layui-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">临床诊断</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="diag" autocomplete="off" placeholder=""  class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">样本类型</label>
+                    <div class="layui-input-inline" style="width:250px">
+                        <select name="styp" lay-verify="styp">
+                            <option value="" selected="">请选择样本类型</option>
+                            <option value="外周血">外周血</option>
+                            <option value="口腔粘膜">口腔粘膜</option>
+                            <option value="肿瘤组织">肿瘤组织</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">样本状态</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="stat" value="合格" title="合格" checked="">
+                            <input type="radio" name="stat" value="不合格" title="不合格" >
+                        </div>
+                    </div>
+                    <div class="layui-inline" style="position: relative;left:-20px;">
+                        <div class="layui-input-inline" style="width: 280px;">
+                            <input type="text" name="smar" autocomplete="off" placeholder="请输入不合格原因"  class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">检测项目</label>
+                    <div class="layui-input-inline" style="width:250px">
+                        <select name="test" lay-verify="test">
+                            <option value="" selected="">请选择检测项目</option>
+                            <option value="大肠癌mRNA动态基因检测" >大肠癌mRNA动态基因检测</option>
+                            <option value="多肿瘤mRNA动态基因检测">多肿瘤mRNA动态基因检测</option>
+                            <option value="乳腺癌mRNA动态基因检测">乳腺癌mRNA动态基因检测</option>
+                            <option value="宫颈癌mRNA动态基因检测">宫颈癌mRNA动态基因检测</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline" >
+                        <label class="layui-form-label">采样日期</label>
+                        <div class="layui-input-inline" style="width:250px">
+                            <input type="text" name="dcol" id="date1" value="" autocomplete="off" placeholder="yyyy-MM-dd" class="layui-input">
+                        </div>
+                    </div>
+{#                    <div class="layui-inline">#}
+{#                        <label class="layui-form-label">收样日期</label>#}
+{#                        <div class="layui-input-inline">#}
+{#                            <input type="text" name="djoi" id="date2" value="" autocomplete="off" placeholder="YYYY-MM-DD" class="layui-input">#}
+{#                        </div>#}
+{#                    </div>#}
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">送检单位</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="unit" lay-verify="required" autocomplete="off" placeholder="必填" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-inline">
+                        <label class="layui-form-label">送检人</label>
+                        <div class="layui-input-inline">
+                            <!--autocomplete="off" 该属性根据之前输入的字段预测自动完成字段输入，默认开启-->
+                            <input type="text" name="send" lay-verify="required" autocomplete="off" placeholder="必填" class="layui-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">手机号码</label>
+                        <div class="layui-input-inline">
+                            <input type="tel" name="phon" autocomplete="off" lay-verify="required|phon" placeholder="必填" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">电子邮箱</label>
+                        <div class="layui-input-inline">
+                            <input type="text" name="emai" autocomplete="off"   class="layui-input">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">报告类型</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="rtyp[d]" value="电子报告" title="电子报告" checked="">
+                        <input type="checkbox" name="rtyp[z]" value="纸质报告" title="纸质报告">
+                        <input type="checkbox" name="rtyp[t]" value="检测结果" title="检测结果">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">备注信息</label>
+                    <div class="layui-input-block">
+                        <textarea name="rmar" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    </div>
+                </div>
+                <!-- 信息提交按钮 按钮放到form外面就不能使用layui自带的表单验证规则，不过可以使用django-ModelForm验证-->
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button type="submit" class="layui-btn" lay-submit="" lay-filter="submit" onclick="" id="submit">提交信息</button>
+                    <button type="reset" class="layui-btn layui-btn-primary" id="reset">重置</button>
+                </div>
+            </div>
+            </form>
+
+        </div>
+    </div>
+
+    <script src="{% static 'layui/layui.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/jquery/jquery-3.4.1.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/jquery/jquery.cookie.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/sample.js' %}" charset="utf-8"></script>
+
+</body>
+</html>
